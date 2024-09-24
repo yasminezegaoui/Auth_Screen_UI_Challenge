@@ -10,13 +10,16 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
+        shadowColor: AppColors.primary.withOpacity(0.6),
+        elevation: 10,
         textStyle: TextStyle(
           fontSize: 20,
-          fontWeight: FontWeight.w500,
-          fontFamily: 'Poppins'
+          fontWeight: FontWeight.w600,
+          fontFamily: 'Poppins',
+          color: Colors.white
         ),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(10),
         )
       )
     )

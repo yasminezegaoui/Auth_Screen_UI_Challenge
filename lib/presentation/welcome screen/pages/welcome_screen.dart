@@ -85,9 +85,58 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
             ),
 
-            SizedBox(height: 30,),
+            SizedBox(height: 90,),
 
-            
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: Row(
+                children: [
+                  ElevatedButton(
+                    onPressed: (){
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/login', 
+                        (route) => false
+                      );
+                    }, 
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 13),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          color: Colors.white
+                        ),
+                      ),
+                    )
+                  ),
+
+                  SizedBox(width: 25,),
+
+                  TextButton(
+                    onPressed: (){
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/register', 
+                        (route) => false
+                      );
+                    }, 
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 23),
+                      child: Text(
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Poppins',
+                          color: Colors.black87
+                        ),
+                      ),
+                    )
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
