@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:auth_screen_ui_challenge/common/my_container.dart';
-import 'package:auth_screen_ui_challenge/common/my_text_field.dart';
+import 'package:auth_screen_ui_challenge/common/widgets/my_container.dart';
+import 'package:auth_screen_ui_challenge/common/widgets/my_text_field.dart';
 import 'package:auth_screen_ui_challenge/core/configs/theme/app_colors.dart';
+import 'package:auth_screen_ui_challenge/presentation/registration&login/login/API/login_api.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -13,6 +14,23 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +94,7 @@ class _LoginState extends State<Login> {
             SizedBox(height: 65,),
         
             MyTextField(
+              controller: emailController,
               hintText: 'Email', 
               obscureText: false,
             ),
@@ -83,6 +102,7 @@ class _LoginState extends State<Login> {
             SizedBox(height: 25,),
         
             MyTextField(
+              controller: passwordController,
               hintText: 'Password', 
               obscureText: true,
             ),
@@ -115,7 +135,9 @@ class _LoginState extends State<Login> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: ElevatedButton(
-                onPressed: (){}, 
+                onPressed: () async{
+                  LoginApi.login(emailController.text.toString(), passwordController.text.toString(), context);
+                }, 
                 child:Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 113, vertical: 12),
                   child: Text(

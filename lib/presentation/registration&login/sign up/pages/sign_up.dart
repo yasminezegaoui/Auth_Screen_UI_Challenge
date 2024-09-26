@@ -1,8 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:auth_screen_ui_challenge/common/my_container.dart';
-import 'package:auth_screen_ui_challenge/common/my_text_field.dart';
+import 'package:auth_screen_ui_challenge/common/widgets/my_container.dart';
+import 'package:auth_screen_ui_challenge/common/widgets/my_text_field.dart';
 import 'package:auth_screen_ui_challenge/core/configs/theme/app_colors.dart';
+import 'package:auth_screen_ui_challenge/presentation/registration&login/sign%20up/API/sign_up_api.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -13,6 +14,28 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+
+  late TextEditingController emailController;
+  late TextEditingController passwordController;
+  late TextEditingController confirmController;
+  late bool isCorrect = false;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    confirmController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    confirmController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +99,7 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height: 65,),
         
             MyTextField(
+              controller: emailController,
               hintText: 'Email', 
               obscureText: false,
             ),
@@ -83,6 +107,7 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height: 25,),
         
             MyTextField(
+              controller: passwordController,
               hintText: 'Password', 
               obscureText: true,
             ),
@@ -90,6 +115,8 @@ class _SignUpState extends State<SignUp> {
             SizedBox(height: 25,),
         
             MyTextField(
+              controller: confirmController,
+              errorText: isCorrect ? 'your input doesn\'t match your password' : null ,
               hintText: 'Confirm Password', 
               obscureText: true,
             ),
@@ -99,7 +126,16 @@ class _SignUpState extends State<SignUp> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: ElevatedButton(
-                onPressed: (){}, 
+                onPressed: () async{
+                  setState(() {
+                    if(confirmController.text == passwordController.text){
+                      isCorrect = false;
+                    }else{
+                      isCorrect = true;
+                    }
+                  });
+                  await SignUpApi.signUp(emailController.text.toString(), passwordController.text.toString(), context);
+                }, 
                 child:Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 108, vertical: 12),
                   child: Text(

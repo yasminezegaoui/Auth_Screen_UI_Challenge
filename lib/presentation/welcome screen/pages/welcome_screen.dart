@@ -37,107 +37,109 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   Widget _buildFg(){
     return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Image.asset(
-              'assets/welcome image.png',
-              height: 422,
-              width: 385,
-            ),
-
-            SizedBox(height: 20,),
-
-            Text(
-              'Discover Your',
-              style: TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 35,
-                fontFamily: 'Poppins'
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets/welcome image.png',
+                height: 422,
+                width: 385,
               ),
-            ),
-            Text(
-              ' Dream Job here',
-              style: TextStyle(
-                color: AppColors.primary,
-                fontWeight: FontWeight.w600,
-                fontSize: 35,
-                fontFamily: 'Poppins'
-              ),
-            ),
-
-            SizedBox(height: 20,),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 35),
-              child: Text(
-                'Explore all the existing job roles based on your interest and study major',
+        
+              SizedBox(height: 20,),
+        
+              Text(
+                'Discover Your',
                 style: TextStyle(
-                  color: AppColors.text,
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13.5,
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 35,
                   fontFamily: 'Poppins'
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-
-            SizedBox(height: 90,),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 40),
-              child: Row(
-                children: [
-                  ElevatedButton(
-                    onPressed: (){
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/login', 
-                        (route) => false
-                      );
-                    }, 
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 13),
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          color: Colors.white
-                        ),
-                      ),
-                    )
-                  ),
-
-                  SizedBox(width: 25,),
-
-                  TextButton(
-                    onPressed: (){
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/register', 
-                        (route) => false
-                      );
-                    }, 
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 23),
-                      child: Text(
-                        'Register',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: 'Poppins',
-                          color: Colors.black87
-                        ),
-                      ),
-                    )
-                  ),
-                ],
+              Text(
+                ' Dream Job here',
+                style: TextStyle(
+                  color: AppColors.primary,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 35,
+                  fontFamily: 'Poppins'
+                ),
               ),
-            )
-          ],
+        
+              SizedBox(height: 20,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 35),
+                child: Text(
+                  'Explore all the existing job roles based on your interest and study major',
+                  style: TextStyle(
+                    color: AppColors.text,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 13.5,
+                    fontFamily: 'Poppins'
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+        
+              SizedBox(height: 90,),
+        
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 40),
+                child: Row(
+                  children: [
+                    ElevatedButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/login', 
+                          (route) => false
+                        );
+                      }, 
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 23, vertical: 13),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            color: Colors.white
+                          ),
+                        ),
+                      )
+                    ),
+        
+                    SizedBox(width: 25,),
+        
+                    TextButton(
+                      onPressed: (){
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/register', 
+                          (route) => false
+                        );
+                      }, 
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 23),
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            fontFamily: 'Poppins',
+                            color: Colors.black87
+                          ),
+                        ),
+                      )
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
